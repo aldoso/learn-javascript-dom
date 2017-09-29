@@ -1,19 +1,11 @@
-// delete an entire element
-var btns = document.querySelectorAll("#book-list .delete")
+//event bubbling - delete an entire li element and also future added elements 
 
-btns.forEach(function(btn){
-  btn.addEventListener('click', function(e){
-    const li = e.target.parentNode
-    li.parentNode.removeChild(li)
-  })
-})
+const list = document.querySelector('#book-list ul');
 
-
-
-//preventDefault
-const link = document.querySelector('#page-banner a')
-
-link.addEventListener('click', function(e){
-  e.preventDefault();
-  console.log('navigaton to', e.target.textContent, 'was prevented')
-})
+// delete books
+list.addEventListener('click', (e) => {
+    if (e.target.className == 'delete') {
+        const li = e.target.parentElement;
+        li.parentNode.removeChild(li);
+    }
+});
